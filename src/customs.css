@@ -1,0 +1,12 @@
+@import 'bootstrap/dist/css/bootstrap.min.css';
+
+.searchByName {
+    margin: 0px 5px 10px 0px
+}
+
+.dropDownList {
+    position: relative;
+    left: 65%;
+    padding: 4px;
+}
+
