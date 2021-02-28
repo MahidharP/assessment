@@ -57,6 +57,9 @@ const Dashboard = () => {
             <Table responsive hover data-toggle="table">
                 <thead>
                     <tr>
+                        <th> Id <i className="sort icon" onClick={(e) => {
+                            handleSort('id')
+                        }}></i></th>
                         <th> Name <i className="sort icon" onClick={(e) => {
                             handleSort('name')
                         }}></i></th>
@@ -87,6 +90,7 @@ const TableRows = (props) => {
     const { user } = props
     return (
         <tr key={user.id}>
+            <td> {user.id} </td>
             <td> {user.name} </td>
             <td> {user.username} </td>
             <td> {user.email} </td>
