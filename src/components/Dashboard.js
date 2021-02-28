@@ -54,7 +54,7 @@ const Dashboard = () => {
                     })
                 }
             </select>
-            <Table responsive hover data-toggle="table">
+            <Table responsive hover striped>
                 <thead>
                     <tr>
                         <th> Id <i className="sort icon" onClick={(e) => {
