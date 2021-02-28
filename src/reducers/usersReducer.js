@@ -18,18 +18,6 @@ const usersReducer = (state = initialUser, action) => {
                 users: [...action.payload]
             }
         }
-        case 'CITY_FILTER': {
-            return {
-                ...state,
-                users: [...action.payload]
-            }
-        }
-        case 'SORT_ASC': {
-            return {
-                ...state,
-                users: [...action.payload]
-            }
-        }
         default: {
             return { ...state }
         }
