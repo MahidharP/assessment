@@ -2,6 +2,8 @@ import React, { useEffect, useState } from 'react'
 import { useSelector, useDispatch } from 'react-redux'
 import { startGetUsers, searchFilterUser, startSortUsers } from '../actions/usersAction'
 import { Table } from '../../node_modules/react-bootstrap';
+import { Popup, Form } from 'semantic-ui-react'
+import FilterControl from './FilterControl'
 
 const Dashboard = () => {
     const [searchUser, setSearchUser] = useState('')
@@ -45,37 +47,66 @@ const Dashboard = () => {
         dispatch(startSortUsers(sortBy, !sortOrder[sortBy] ? 'asc' : 'desc'))
     }
 
-
     return (
         <div className="divDashboard">
             <h2 className="h2Dashboard"> Users Count : {users.users.length}</h2>
-            <input type="text" value={searchUser} className="searchByName" onChange={handleUserChange} placeholder="Search..." />
-            <select value={searchCity} onChange={handleSearchCity} className="dropDownList">
-                <option value=""> Select City  </option>
-                {
-                    users.dropDownList.map((user) => {
-                        return <option value={user.address.city} key={user.id}> {user.address.city} </option>
-                    })
-                }
-            </select>
+            <Form> <input placeholder="Search..." value={searchUser} className="searchByName" onChange={handleUserChange} /> </Form>
             <Table responsive hover striped>
                 <thead>
                     <tr>
                         <th> Id <i className="sort icon" onClick={(e) => {
                             handleSort('id')
-                        }}></i></th>
+                        }}></i> </th>
                         <th> Name <i className="sort icon" onClick={(e) => {
                             handleSort('name')
-                        }}></i></th>
+                        }}></i> <Popup
+                                content={
+                                    <FilterControl field="name" holderText="Search By Name" />
+                                }
+                                on='click'
+                                pinned
+                                trigger={<i className="filter icon"></i>}
+                            />
+                        </th>
                         <th> Username <i className="sort icon" onClick={(e) => {
                             handleSort('username')
-                        }}></i></th>
+                        }}></i> <Popup
+                                content={
+                                    <FilterControl field="username" holderText="Search By Username" />
+                                }
+                                on='click'
+                                pinned
+                                trigger={<i className="filter icon"></i>}
+                            />
+                        </th>
                         <th> Email <i className="sort icon" onClick={(e) => {
                             handleSort('email')
-                        }}></i></th>
+                        }}></i> <Popup
+                                content={
+                                    <FilterControl field="email" holderText="Search By Email" />
+                                }
+                                on='click'
+                                pinned
+                                trigger={<i className="filter icon"></i>}
+                            /> </th>
                         <th> City <i className="sort icon" onClick={(e) => {
                             handleSort('address.city')
-                        }}></i></th>
+                        }}></i> <Popup
+                                content={
+                                    <select value={searchCity} onChange={handleSearchCity}>
+                                        <option value=""> Select City  </option>
+                                        {
+                                            users.dropDownList.map((user) => {
+                                                return <option value={user.address.city} key={user.id}> {user.address.city} </option>
+                                            })
+                                        }
+                                    </select>
+                                }
+                                on='click'
+                                pinned
+                                trigger={<i className="filter icon"></i>}
+                            />
+                        </th>
                     </tr>
                 </thead>
                 <tbody>

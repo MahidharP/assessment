@@ -40,7 +40,31 @@ export const searchFilterUser = (search) => {
     }
 }
 
+export const searchExactUser = (search, field) => {
+    return (dispatch) => {
+        axios.get(`http://localhost:3033/users/filter/equals?search=${search}&field=${field}`)
+            .then((response) => {
+                const users = response.data
+                dispatch(userSearch(users))
+            })
+            .catch((err) => {
+                alert(err.message)
+            })
+    }
+}
 
+export const searchContainsUser = (search, field) => {
+    return (dispatch) => {
+        axios.get(`http://localhost:3033/users/filter/contains?search=${search}&field=${field}`)
+            .then((response) => {
+                const users = response.data
+                dispatch(userSearch(users))
+            })
+            .catch((err) => {
+                alert(err.message)
+            })
+    }
+}
 
 export const startSortUsers = (sortBy, order) => {
     return (dispatch) => {
