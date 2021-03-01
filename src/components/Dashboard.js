@@ -43,8 +43,8 @@ const Dashboard = () => {
 
 
     return (
-        <div>
-            <h3> Users Count : - {users.users.length}</h3>
+        <div className="divDashboard">
+            <h2 className="h2Dashboard"> Users Count : {users.users.length}</h2>
             <input type="text" value={searchUser} className="searchByName" onChange={handleUserChange} placeholder="Search..." />
             <select value={searchCity} onChange={handleSearchCity} className="dropDownList">
                 <option value=""> Select City  </option>
