@@ -23,6 +23,10 @@ const Dashboard = () => {
         dispatch(startGetUsers())
     }, [dispatch])
 
+    useEffect(() => {
+        document.title = `Users - ${users.users.length}`
+    }, [users])
+
     const handleUserChange = (e) => {
         const result = e.target.value
         setSearchUser(result)
